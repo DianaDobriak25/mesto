@@ -1,0 +1,6 @@
+.avatar__image {
+    display: flex;
+    width: 120px;
+    border-radius: 50%;
+    text-align: left;
+}

@@ -1,0 +1,10 @@
+.page {
+    font-family: "Inter", Arial, sans-serif;
+    wigth: 100%;
+    min-height: 100vh;
+    box-sizing: border-box;
+    padding-top: 45px;
+    padding-bottom: 60px;
+    background-color: #000000;
+    -webkit-font-smoothing: antialiased;
+}

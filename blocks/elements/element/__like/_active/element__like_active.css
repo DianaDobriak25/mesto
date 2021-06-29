@@ -1,0 +1,7 @@
+.element__like_active:active {
+
+        background: red;
+        transition: background 0s;
+    
+        
+} 

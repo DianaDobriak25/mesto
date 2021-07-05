@@ -2,5 +2,13 @@
         display: block;
         max-width: calc(1280px - 400px);
         margin: 0 auto 41px;
-    
 }
+
+
+
+@media screen and (max-width: 768px) {
+        .header {
+            width: calc(100% - 217px);
+            margin: 0 auto 32px;
+        }
+    }

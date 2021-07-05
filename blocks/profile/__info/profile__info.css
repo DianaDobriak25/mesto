@@ -1,9 +1,13 @@
 .profile__info {
     display: flex;
-    width: 336px;
-    flex-direction: row;
-    margin-left: 4px;
-    margin-right: 244px;
-    line-height: 16px;
-    
+    flex-direction: column;
+    flex-grow: 1;
+    position: relative;
+}
+
+
+@media screen and (max-width: 767.5px) {
+    .profile__info {
+   flex-direction: row;
+    }
 }

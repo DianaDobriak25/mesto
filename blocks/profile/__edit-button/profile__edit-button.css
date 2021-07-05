@@ -1,4 +1,7 @@
 .profile__edit-button {
+    position: absolute;
+    left: 312px;
+    top: 15px;
     width: 24px;
     height: 24px;
     border: 1px solid #FFFFFF;
@@ -8,5 +11,6 @@
 
 .profile__edit-button:hover {
     color: #FFFFFF;
-   opacity: 0.5;
-   }
+    opacity: 0.5;
+}
+

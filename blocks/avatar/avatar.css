@@ -1,6 +1,10 @@
 .avatar {
-  margin: 0px;
-  width: 169px;
-  height: 128px;
-  text-align: center;
+  margin-right: 30px;
+}
+
+@media screen and (max-width: 768px) {
+  .avatar {
+    margin-bottom: 23px;
+    text-align: center;
+  }
 }

@@ -7,10 +7,29 @@
     border: 1px solid #FFFFFF;
     background-color: #000000;
     cursor: pointer;
+    -webkit-transition: 0.3s;
+    -moz-transition: 0.3s;
+    -ms-transition: 0.3s;
+    -o-transition: 0.3s;
+    transition: 0.3s;
+    
 }
 
 .profile__edit-button:hover {
     color: #FFFFFF;
     opacity: 0.5;
+}
+
+@media screen and (max-width: 768px) {
+    .profile__edit-button {
+        right: -32px;
+        top: 8px;
+        left: auto;
+        width: 18px;
+        height: 18px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
 }
 

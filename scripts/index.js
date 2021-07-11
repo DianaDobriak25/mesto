@@ -4,10 +4,16 @@
 
 // провожу выборку DOM элементов
 
-const popupButtonElement = document.querySelector('.popup__button')
-const profileEditButtonElement = document.querySelector('.profile__edit-button')
-const popupElement = document.querySelector('.popup')
-const popupCloseButtonElement = popupElement.querySelector('.popup__close')
+const popupButtonElement = document.querySelector('.popup__button');
+const profileEditButtonElement = document.querySelector('.profile__edit-button');
+const popupElement = document.querySelector('.popup');
+const popupCloseButtonElement = popupElement.querySelector('.popup__close');
+
+const formInputName = document.getElementById("name");
+const formInputDescription = document.getElementById("description");
+
+const nameElement = document.querySelector('.profile__name');
+const descriptionElement = document.querySelector('.profile__description');
 // console.log(popupButtonElement, profileEditButtonElement, popupElement, popupCloseButtonElement);
 
 
@@ -19,19 +25,17 @@ const popupCloseButtonElement = popupElement.querySelector('.popup__close')
 //}
 
 //Метод add объекта classList позволяет добавлять CSS классы элементу
-const profileEditButton = function() {
-    popupElement.classList.add('popup_is-opened')
+const profileOpenPopup = function () {
+    formInputName.value = nameElement.textContent; // задать в input name="name" значение из елемента profile__name
+    formInputDescription.value = descriptionElement.textContent; // задать в input name="description" значение из елемента profile__description
+    popupElement.classList.add('popup_is-opened');
     // console.log('Open popup clicked')
-  }
-  
-  ////Метод remove объекта classList позволяет удалять CSS классы элемента
-  const closePopup = function() {
-    popupElement.classList.remove('popup_is-opened')
-  }
+}
 
-  const popupButton = function() {
-    popupElement.classList.remove('popup_is-opened')
-  }
+////Метод remove объекта classList позволяет удалять CSS классы элемента
+const closePopup = function () {
+    popupElement.classList.remove('popup_is-opened');
+}
 
 //togglePopupVisibility() // при вызове в первый раз всплывающего окна нет
 //togglePopupVisibility() // при вызове во второй раз - пояаилось окошко
@@ -42,27 +46,20 @@ const profileEditButton = function() {
 // Регистрируем обработчики событий по клику
 //addEventListener - определяет  2 обязательных типа аргумента:
 //-тип события (напр.: "click", что произойдет) и функцию, которая будет исполнена после указанного события.
-profileEditButtonElement.addEventListener('click', profileEditButton)
-popupCloseButtonElement.addEventListener('click', closePopup)
-popupButtonElement.addEventListener('click', popupButton)
+profileEditButtonElement.addEventListener('click', profileOpenPopup);
+popupCloseButtonElement.addEventListener('click', closePopup);
+popupButtonElement.addEventListener('click', closePopup);
 
 
 
 
 const formElement = document.querySelector('.popup__container');
 
-function formSubmitHandler (evt) {
+function formSubmitHandler(evt) {
     evt.preventDefault();
 
-    const formInputName = document.getElementById("name").value; // в переменную formInputName сохранили значение из input с id=name;
-    const formInputDescription = document.getElementById("description").value;
-
-    const nameElement = document.querySelector('.profile__name');// в еременную nameElement сохраняем тег с классом .profile__name;
-    const descriptionElement = document.querySelector('.profile__description');
-
-    nameElement.textContent = formInputName; // свойству textContent элемента nameElement присваиваем значение из переменной formInputName, в которую до этого сохранили значение из input с атрибутом name="name"
-    descriptionElement.textContent = formInputDescription;
+    nameElement.textContent = formInputName.value;
+    descriptionElement.textContent = formInputDescription.value;
 
 }
 formElement.addEventListener('submit', formSubmitHandler); // добавляем обработчик события на отправку формы, т.е. указываем, что при отправке формы ('submit'), будет вызвана функция formSubmitHandler
-  

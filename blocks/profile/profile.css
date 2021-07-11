@@ -4,6 +4,7 @@
     margin: 0 auto 50px;
     justify-content: space-between;
     align-items: center;
+    
 }
 
 
@@ -12,7 +13,6 @@
     .profile {
         width: calc(100% - 38px);
         flex-direction: column;
-        align-items: center;
         justify-content: center;
     }
 }

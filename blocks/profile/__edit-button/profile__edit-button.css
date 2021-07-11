@@ -1,7 +1,7 @@
 .profile__edit-button {
-    position: absolute;
-    left: 312px;
-    top: 15px;
+    position: relative;
+    bottom: 8px;
+    margin: 0 0 0 18px;
     width: 24px;
     height: 24px;
     border: 1px solid #FFFFFF;
@@ -13,6 +13,8 @@
     -o-transition: 0.3s;
     transition: 0.3s;
     
+    
+    
 }
 
 .profile__edit-button:hover {
@@ -22,11 +24,10 @@
 
 @media screen and (max-width: 768px) {
     .profile__edit-button {
-        right: -32px;
-        top: 8px;
-        left: auto;
         width: 18px;
         height: 18px;
+        bottom: 6px;
+        margin-left: 10px;
         display: flex;
         justify-content: center;
         align-items: center;

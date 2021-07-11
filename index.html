@@ -20,65 +20,64 @@
 
         <main>
             <section class="profile">
-                <div class="avatar">
                     <img src="./images/image.png" class="avatar__image" alt="Жак-Ив Кусто. Исследователь океана.">
-                </div>
                 <div class="profile__info">
-
-                    <h1 class="profile__name">Жак-Ив Кусто</h1>
+                    <div class="profile__header">
+                        <h1 class="profile__name">Жак-Ив Кусто</h1>
+                        <button class="profile__edit-button" type="button">
+                            <img src="./images/Vector.svg" class="profile__edit-image" alt="Редактировать профиль">
+                        </button>
+                    </div>
                     <p class="profile__description">Исследователь океана</p>
-                    <button class="profile__edit-button">
-                        <img src="./images/Vector.svg" class="profile__edit-image">
-                    </button>
                 </div>
-                <button class="profile__add-button">
-                    <img src="./images/plus.svg" class="profile__add-image">
+                <button class="profile__add-button" type="button">
+                    <img src="./images/plus.svg" class="profile__add-image" alt="Добавить публикацию">
                 </button>
             </section>
 
             <section class="elements">
-                <div class="element">
+                <article class="element">
                     <img class="element__grid" src="./images/kirill-pershin-1088404-unsplash.png" alt="Карачаевск">
                     <div class="element__content">
-                        <p class="element__appellation">Карачаевск</p>
-                        <button class="element__like"></button>
+                        <h2 class="element__appellation">Карачаевск</h2>
+                        <button class="element__like" type="button"></button>
                     </div>
-                </div>
-                <div class="element">
+                </article>
+                <article class="element">
                     <img class="element__grid" src="./images/kirill-pershin-1404681-unsplash.png" alt="Эльбрус">
                     <div class="element__content">
-                        <p class="element__appellation">Гора Эльбрус</p>
-                        <button class="element__like"></button>
+                        <h2 class="element__appellation">Гора Эльбрус</h2>
+                        <button class="element__like" type="button"></button>
                     </div>
-                </div>
-                <div class="element">
+                </article>
+                <article class="element">
                     <img class="element__grid" src="./images/kirill-pershin-1556355-unsplash.png" alt="Домбай">
                     <div class="element__content">
-                        <p class="element__appellation">Домбай</p>
-                        <button class="element__like"></button>
+                        <h2 class="element__appellation">Домбай</h2>
+                        <button class="element__like" type="button"></button>
                     </div>
-                </div>
-                <div class="element">
+                </article>
+                <article class="element">
                     <img class="element__grid" src="./images/kirill-pershin-1404681-unsplash.png" alt="Эльбрус">
                     <div class="element__content">
-                        <p class="element__appellation">Гора Эльбрус</p>
-                        <button class="element__like"></button>
+                        <h2 class="element__appellation">Гора Эльбрус</h2>
+                        <button class="element__like" type="button"></button>
                     </div>
-                </div>
-                <div class="element">
+                </article>
+                <article class="element">
                     <img class="element__grid" src="./images/kirill-pershin-1556355-unsplash.png" alt="Домбай">
                     <div class="element__content">
-                        <p class="element__appellation">Домбай</p>
-                        <button class="element__like"></button>
+                        <h2 class="element__appellation">Домбай</h2>
+                        <button class="element__like" type="button"></button>
                     </div>
-                </div>
-                <div class="element">
+                </article>
+                <article class="element">
                     <img class="element__grid" src="./images/kirill-pershin-1088404-unsplash.png" alt="Карачаевск">
                     <div class="element__content">
-                        <p class="element__appellation">Карачаево-Ч...</p>
-                        <button class="element__like"></button>
+                        <h2 class="element__appellation">Карачаево-Черкесская республика</h2>
+                        <button class="element__like" type="button"></button>
                     </div>
-                </div>
+                </article>
             </section>
         </main>
 
@@ -87,17 +86,17 @@
             <p class="footer__resource">&copy;2021. Mesto Russia</p>
         </footer>
 
-        <section class="popup">
-            <form class="popup__container">
-                <button class="popup__close"></button>
+        <article class="popup">
+            <form class="popup__container" name="">
+                <button class="popup__close" type="button"></button>
                 <div class="popup__content">
                     <h2 class="popup__title">Редактировать профиль</h2>
-                    <input name="name" class="popup__input" id="name" value="Жак-Ив Кусто">
-                    <input name="description" class="popup__input" id="description" value="Исследователь океана">
+                    <input name="name" class="popup__input" id="name" value="">
+                    <input name="description" class="popup__input" id="description" value="">
                     <button class="popup__button" type="submit">Сохранить</button>
                 </div>
             </form>
-        </section>
+        </article>
 
 
     </div>

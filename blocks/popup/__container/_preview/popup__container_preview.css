@@ -1,0 +1,15 @@
+.popup__container_preview {
+    padding: 0;
+    max-width: none;
+    width: auto;
+    border-radius: 0;
+    background: transparent;
+    box-shadow: none;
+}
+
+@media screen and (max-width: 768px) {
+    .popup__container_preview {
+       border-radius: none;
+       
+    }
+}

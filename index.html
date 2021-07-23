@@ -35,50 +35,7 @@
                 </button>
             </section>
 
-            <section class="elements">
-                <article class="element">
-                    <img class="element__grid" src="./images/kirill-pershin-1088404-unsplash.png" alt="Карачаевск">
-                    <div class="element__content">
-                        <h2 class="element__appellation">Карачаевск</h2>
-                        <button class="element__like" type="button"></button>
-                    </div>
-                </article>
-                <article class="element">
-                    <img class="element__grid" src="./images/kirill-pershin-1404681-unsplash.png" alt="Эльбрус">
-                    <div class="element__content">
-                        <h2 class="element__appellation">Гора Эльбрус</h2>
-                        <button class="element__like" type="button"></button>
-                    </div>
-                </article>
-                <article class="element">
-                    <img class="element__grid" src="./images/kirill-pershin-1556355-unsplash.png" alt="Домбай">
-                    <div class="element__content">
-                        <h2 class="element__appellation">Домбай</h2>
-                        <button class="element__like" type="button"></button>
-                    </div>
-                </article>
-                <article class="element">
-                    <img class="element__grid" src="./images/kirill-pershin-1404681-unsplash.png" alt="Эльбрус">
-                    <div class="element__content">
-                        <h2 class="element__appellation">Гора Эльбрус</h2>
-                        <button class="element__like" type="button"></button>
-                    </div>
-                </article>
-                <article class="element">
-                    <img class="element__grid" src="./images/kirill-pershin-1556355-unsplash.png" alt="Домбай">
-                    <div class="element__content">
-                        <h2 class="element__appellation">Домбай</h2>
-                        <button class="element__like" type="button"></button>
-                    </div>
-                </article>
-                <article class="element">
-                    <img class="element__grid" src="./images/kirill-pershin-1088404-unsplash.png" alt="Карачаевск">
-                    <div class="element__content">
-                        <h2 class="element__appellation">Карачаево-Черкесская республика</h2>
-                        <button class="element__like" type="button"></button>
-                    </div>
-                </article>
-            </section>
+            <section class="elements"></section>
         </main>
 
 
@@ -86,18 +43,54 @@
             <p class="footer__resource">&copy;2021. Mesto Russia</p>
         </footer>
 
-        <article class="popup">
-            <form class="popup__container" name="popup">
+        <article class="popup popup_edit">
+            <form class="popup__container" name="popupEdit">
                 <button class="popup__close" type="button"></button>
                 <div class="popup__content">
                     <h2 class="popup__title">Редактировать профиль</h2>
-                    <input name="name" class="popup__input" id="name" value="">
-                    <input name="description" class="popup__input" id="description" value="">
+                    <input name="name" class="popup__input" id="nameEdit" value="">
+                    <input name="description" class="popup__input" id="descriptionEdit" value="">
                     <button class="popup__button" type="submit">Сохранить</button>
                 </div>
             </form>
         </article>
 
+        <article class="popup popup_new-place">
+            <form class="popup__container" name="popupNewPlace">
+                <button class="popup__close" type="button"></button>
+                <h2 class="popup__title">Новое место</h2>
+                <input name="name" placeholder="Название" class="popup__input" id="nameNewPlace" value="">
+                <input name="description" placeholder="Ссылка на картинку"  class="popup__input" id="descriptionNewPlace" value="">
+                <button class="popup__button" type="submit">Создать</button>
+            </form>
+        </article>
+
+        <article class="popup popup_preview">
+            <div class="popup__container popup__container_preview">
+                <button class="popup__close" type="button"></button>
+                <div class="popup__content popup__content_preview">
+                    <img src="" class="popup__image">
+                    <p class="popup__image-name"></p>
+                </div>
+            </form>
+        </article>
+
+
+
+        <template id="elementTemplate">
+            <article class="element">
+                <button class="element__delete" type="button">
+                    <img src="./images/Group.svg" class="element__basket" alt="Удалить карточку">
+                </button>
+                <img class="element__grid" src="" alt="">
+                <div class="element__content">
+                    <h2 class="element__appellation"></h2>
+                    <button class="element__like" type="button"></button>
+                </div>
+            </article>
+        </template>
+
+        
 
     </div>
     <script src="./scripts/index.js"></script>

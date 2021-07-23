@@ -1,0 +1,4 @@
+.popup__content_preview {
+    position: relative;
+    max-height: calc(100vh - 62px);
+}

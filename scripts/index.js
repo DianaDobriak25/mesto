@@ -15,6 +15,7 @@ const popupPreviewImage = popupPreview.querySelector('.popup__image');
 const popupPreviewImageName = popupPreview.querySelector('.popup__image-name');
 const popupPreviewClose = popupPreview.querySelector('.popup__close');
 
+
 // Edit
 const popupElementEdit = document.querySelector('.popup_edit');
 const popupButtonEdit = popupElementEdit.querySelector('.popup__button');
@@ -90,10 +91,10 @@ function newPlaceFormSubmitHandler(evt) {
     closeModal(popupElementNewPlace);
 }
 newPlaceForm.addEventListener('submit', newPlaceFormSubmitHandler);
-profileAddButton.addEventListener('click', function() {
+profileAddButton.addEventListener('click', function () {
     openModal(popupElementNewPlace);
 });
-popupNewPlaceCloseButtonElement.addEventListener('click', function() {
+popupNewPlaceCloseButtonElement.addEventListener('click', function () {
     closeModal(popupElementNewPlace);
 });
 
@@ -107,7 +108,7 @@ function showCardPreview(item) {
         popupPreviewImageName.textContent = elImageName.textContent;
     });
 }
-popupPreviewClose.addEventListener('click', function() {
+popupPreviewClose.addEventListener('click', function () {
     closeModal(popupPreview);
 });
 
@@ -125,7 +126,7 @@ function editFormSubmitHandler(evt) {
 }
 editForm.addEventListener('submit', editFormSubmitHandler);
 profileEditButtonElement.addEventListener('click', profileOpenPopup);
-popupEditCloseButtonElement.addEventListener('click', function() {
+popupEditCloseButtonElement.addEventListener('click', function () {
     closeModal(popupElementEdit);
 });
 
@@ -141,7 +142,7 @@ function setLikeEventListener(card) {
 //Удаление карточки
 function setDeleteCardListener(card) {
     const bin = card.querySelector('.element__delete');
-    bin.addEventListener('click', function(evt) {
+    bin.addEventListener('click', function (evt) {
         card.remove();
     })
 }
@@ -153,3 +154,29 @@ function openModal(el) {
 function closeModal(el) {
     el.classList.remove('popup_is-opened');
 }
+
+const popupCloseEsc = () => {
+    document.addEventListener('keydown', (evt) => {
+        if (evt.key === 'Escape') {
+            const popapPage = document.querySelectorAll('.popup');
+            popapPage.forEach((el) => {
+                closeModal(el);
+            })
+        }
+    })
+}
+popupCloseEsc();
+
+const popupCloseOverlay = () => {
+    const popapPage = Array.from(document.querySelectorAll('.popup'));
+    popapPage.forEach((el) => {
+        const container = el.querySelector('.popup__container');
+        container.addEventListener('click', evt => {
+            evt.stopPropagation();
+        })
+        el.addEventListener('click', () => {
+            closeModal(el);
+        })
+    })
+}
+popupCloseOverlay();

@@ -63,16 +63,12 @@ function createCard(item) {
     const newItemDescription = newItem.querySelector('.element__appellation');
     newItemImage.setAttribute('src', item.link);
     newItemDescription.textContent = item.name;
-    renderCardItem(newItem);
-}
-
-function renderCardItem(card) {
-    containerOfCards.prepend(card);
+    containerOfCards.prepend(newItem);
     const firstChild = containerOfCards.querySelector('.element');
     showCardPreview(firstChild);
     setLikeEventListener(firstChild);
     setDeleteCardListener(firstChild);
-};
+}
 
 defaultCards.forEach(function (item) {
     createCard(item);
@@ -123,6 +119,7 @@ function editFormSubmitHandler(evt) {
     evt.preventDefault();
     nameElementProfile.textContent = formInputNameEdit.value;
     descriptionElementProfile.textContent = formInputDescriptionEdit.value;
+    closeModal(popupElementEdit);
 }
 editForm.addEventListener('submit', editFormSubmitHandler);
 profileEditButtonElement.addEventListener('click', profileOpenPopup);
@@ -150,26 +147,25 @@ function setDeleteCardListener(card) {
 // Управление модальным окном
 function openModal(el) {
     el.classList.add('popup_is-opened');
+    document.addEventListener('keydown', popupCloseEsc);
 }
 function closeModal(el) {
     el.classList.remove('popup_is-opened');
+    document.removeEventListener('keydown', popupCloseEsc);
 }
 
-const popupCloseEsc = () => {
-    document.addEventListener('keydown', (evt) => {
-        if (evt.key === 'Escape') {
-            const popapPage = document.querySelectorAll('.popup');
-            popapPage.forEach((el) => {
-                closeModal(el);
-            })
-        }
-    })
+const popupCloseEsc = (evt) => {
+    if (evt.key === 'Escape') {
+        const popapList = document.querySelectorAll('.popup');
+        popapList.forEach((el) => {
+            closeModal(el);
+        })
+    }
 }
-popupCloseEsc();
 
 const popupCloseOverlay = () => {
-    const popapPage = Array.from(document.querySelectorAll('.popup'));
-    popapPage.forEach((el) => {
+    const popapList = Array.from(document.querySelectorAll('.popup'));
+    popapList.forEach((el) => {
         const container = el.querySelector('.popup__container');
         container.addEventListener('click', evt => {
             evt.stopPropagation();

@@ -1,3 +1,4 @@
+
 const showInputError = (formElement, inputElement, errorElement, inputErrorClass, errorClass) => {
     inputElement.classList.add(inputErrorClass);                    //Добавление класса с ошибкой 
     errorElement.textContent = inputElement.validationMessage;      // наполняем элемент текстом
@@ -54,7 +55,7 @@ const buttonStatus = (formElement, inputList, submitButtonSelector, inactiveButt
 
 
 
-const eventHandling = (formElement, inputSelector, submitButtonSelector, inputErrorClass, errorClass, inactiveButtonClass) => {
+const setEventListeners = (formElement, inputSelector, submitButtonSelector, inputErrorClass, errorClass, inactiveButtonClass) => {
     formElement.addEventListener('submit', (event) => {
         event.preventDefault();// Навешиваем для них обработчик события.Для форм выключаем один раз действие по умолчанию. При сабмите действие по умолчанию нужно запретить.
     });//НАВЕШИВАНИЕ ОБРАБОТЧИКА СОБЫТИЯ К КОНКРЕТНО ОДНОЙ ФОРМЕ.
@@ -74,10 +75,10 @@ const eventHandling = (formElement, inputSelector, submitButtonSelector, inputEr
  * Функция отвечает за включение валидации
  */
 const enableValidation = (config) => {
-    // находим все формы и для каждой формы устанавливаем обработчики событий( eventHandling)
+    // находим все формы и для каждой формы устанавливаем обработчики событий(setEventListeners)
     const formList = Array.from(document.querySelectorAll(config.formSelector));
     formList.forEach(formElement => {
-        eventHandling(formElement, config.inputSelector, config.submitButtonSelector, config.inputErrorClass, config.errorClass, config.inactiveButtonClass);
+        setEventListeners(formElement, config.inputSelector, config.submitButtonSelector, config.inputErrorClass, config.errorClass, config.inactiveButtonClass);
     });//
 };
 

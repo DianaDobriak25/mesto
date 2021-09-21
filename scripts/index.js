@@ -58,16 +58,26 @@ const defaultCards = [
 
 // Добавление новой карточки, вызывается каждый раз, когда добавляется элемент на страницу.
 function createCard(item) {
-    const newItem = elementTemplateContent.cloneNode(true);
-    const newItemImage = newItem.querySelector('.element__grid');
-    const newItemDescription = newItem.querySelector('.element__appellation');
-    newItemImage.setAttribute('src', item.link);
-    newItemDescription.textContent = item.name;
+    const newItem = createNewCard(item.link, item.name);
+    /**
+     * Дубликат узла, возвращённого cloneNode() не является частью документа, 
+     * пока не будет добавлен в другой узел, который является частью документа, 
+     * используя Node.appendChild() или другой метод
+     */
     containerOfCards.prepend(newItem);
     const firstChild = containerOfCards.querySelector('.element');
     showCardPreview(firstChild);
     setLikeEventListener(firstChild);
     setDeleteCardListener(firstChild);
+}
+
+function createNewCard(image, description) {
+    const newItem = elementTemplateContent.cloneNode(true);
+    const newItemImage = newItem.querySelector('.element__grid');
+    const newItemDescription = newItem.querySelector('.element__appellation');
+    newItemImage.setAttribute('src', image);
+    newItemDescription.textContent = description;
+    return newItem;
 }
 
 defaultCards.forEach(function (item) {
@@ -156,10 +166,8 @@ function closeModal(el) {
 
 const popupCloseEsc = (evt) => {
     if (evt.key === 'Escape') {
-        const popapList = document.querySelectorAll('.popup');
-        popapList.forEach((el) => {
-            closeModal(el);
-        })
+        const popap = document.querySelector('.popup_is-opened');
+        closeModal(popap);
     }
 }
 

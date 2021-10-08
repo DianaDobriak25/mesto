@@ -53,6 +53,16 @@ export default class FormValidator {
         }// включаем кнопку
     } //проверка состояния кнопки
 
+
+    // Сброс состояния валидатора
+    resetValidation() {
+        this._buttonStatus();
+        this._inputList.forEach((inputElement) => {
+            inputElement.value = "";
+            this._hideInputError(inputElement)
+        });
+    }
+
     setEventListeners() {
         this._formElement.addEventListener('submit', (event) => {
             event.preventDefault();

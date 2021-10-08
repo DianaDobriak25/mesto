@@ -1,6 +1,33 @@
 import { Card } from "./card.js";
 import FormValidator from "./formValidator.js";
 
+const defaultCards = [
+    {
+        name: 'Архыз',
+        link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/arkhyz.jpg'
+    },
+    {
+        name: 'Челябинская область',
+        link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/chelyabinsk-oblast.jpg'
+    },
+    {
+        name: 'Иваново',
+        link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/ivanovo.jpg'
+    },
+    {
+        name: 'Камчатка',
+        link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/kamchatka.jpg'
+    },
+    {
+        name: 'Холмогорский район',
+        link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/kholmogorsky-rayon.jpg'
+    },
+    {
+        name: 'Байкал',
+        link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/baikal.jpg'
+    }
+];
+
 
 // New Place
 const popupElementNewPlace = document.querySelector('.popup_new-place');
@@ -15,7 +42,6 @@ const newPlaceForm = popupElementNewPlace.querySelector('form');
 
 // Edit
 const popupElementEdit = document.querySelector('.popup_edit');
-const popupButtonEdit = popupElementEdit.querySelector('.popup__button');
 const profileEditButtonElement = document.querySelector('.profile__edit-button');
 const popupEditCloseButtonElement = popupElementEdit.querySelector('.popup__close');
 const editForm = popupElementEdit.querySelector('form');
@@ -26,15 +52,56 @@ const formInputDescriptionEdit = document.getElementById("descriptionEdit");
 const nameElementProfile = document.querySelector('.profile__name');
 const descriptionElementProfile = document.querySelector('.profile__description');
 
+// Preview
+const popupPreview = document.querySelector('.popup_preview');
+const popupPreviewImage = popupPreview.querySelector('.popup__image');
+const popupPreviewImageName = popupPreview.querySelector('.popup__image-name');
+const popupPreviewClose = popupPreview.querySelector('.popup__close');
+
+const cardSection = document.querySelector('.elements');
+
+const formEdit = document.getElementById("formEdit");
+const formNewPlace = document.getElementById("formNewPlace");
+
+// Перенесли валидаторы из цикла в отдельные элементы
+const validatorConfig = {
+    inputSelector: '.popup__input',
+    submitButtonSelector: '.popup__button',
+    inactiveButtonClass: 'popup__button_disabled',
+    inputErrorClass: 'popup__input_type_error',
+    errorClass: 'error'
+};
+const validatorEdit = new FormValidator(validatorConfig, formEdit);
+validatorEdit.setEventListeners();
+
+const validatorNewPlace = new FormValidator(validatorConfig, formNewPlace);
+validatorNewPlace.setEventListeners();
 
 
+defaultCards.forEach((item) => {
+    const card = createCard(item);
+    prependCard(card);
+})
 
+function initPopupPreview(name, link) {
+    openModal(popupPreview);
+    popupPreviewImage.setAttribute('src', link);
+    popupPreviewImage.setAttribute('alt', name);
+    popupPreviewImageName.textContent = name;
+}
+
+popupPreviewClose.addEventListener('click', () => {
+    closeModal(popupPreview);
+});
+
+function prependCard(card) {
+    cardSection.prepend(card);
+}
 
 function createCard(item) {
-    const newCard = new Card(item, item, '#template-element');// созд. класс для каждой карточки
-    const cardSection = document.querySelector('.elements');// находим блок для карточек
+    const newCard = new Card(item, '.elementTemplate');// созд. класс для каждой карточки
     const cardElement = newCard.getCard();// вставляем метод класса Card  в переменную
-    cardSection.prepend(cardElement);// добав. какрточку в конец блока
+    return cardElement;
 }
 
 
@@ -48,11 +115,13 @@ function newPlaceFormSubmitHandler(evt) {
         name: name,
         link: link
     }
-    createCard(newItem);
+    const card = createCard(newItem);
+    prependCard(card);
     closeModal(popupElementNewPlace);
 }
 newPlaceForm.addEventListener('submit', newPlaceFormSubmitHandler);
 profileAddButton.addEventListener('click', function () {
+    validatorNewPlace.resetValidation();
     openModal(popupElementNewPlace);
 });
 popupNewPlaceCloseButtonElement.addEventListener('click', function () {
@@ -62,6 +131,7 @@ popupNewPlaceCloseButtonElement.addEventListener('click', function () {
 
 // Редактирование профиля
 const profileOpenPopup = function () {
+    validatorEdit.resetValidation();
     formInputNameEdit.value = nameElementProfile.textContent;
     formInputDescriptionEdit.value = descriptionElementProfile.textContent;
     openModal(popupElementEdit);
@@ -109,26 +179,9 @@ const popupCloseOverlay = () => {
         })
     })
 }
+
 popupCloseOverlay();
 
-/**
- * Функция отвечает за включение валидации
- */
- const enableValidation = (config) => {
-    // находим все формы и для каждой формы устанавливаем обработчики событий(setEventListeners)
-    const formList = Array.from(document.querySelectorAll(config.formSelector));
-    formList.forEach(formElement => {
-        const validator = new FormValidator(config, formElement);
-        validator.setEventListeners();
-    });//
-};
-
-
-enableValidation({
-    formSelector: 'form', //'.popup__form',
-    inputSelector: '.popup__input',
-    submitButtonSelector: '.popup__button',
-    inactiveButtonClass: 'popup__button_disabled',
-    inputErrorClass: 'popup__input_type_error',
-    errorClass: 'error'
-});
+export {
+    initPopupPreview
+}

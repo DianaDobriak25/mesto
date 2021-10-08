@@ -1,49 +1,15 @@
-//1
-const defaultCards = [
-    {
-        name: 'Архыз',
-        link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/arkhyz.jpg'
-    },
-    {
-        name: 'Челябинская область',
-        link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/chelyabinsk-oblast.jpg'
-    },
-    {
-        name: 'Иваново',
-        link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/ivanovo.jpg'
-    },
-    {
-        name: 'Камчатка',
-        link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/kamchatka.jpg'
-    },
-    {
-        name: 'Холмогорский район',
-        link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/kholmogorsky-rayon.jpg'
-    },
-    {
-        name: 'Байкал',
-        link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/baikal.jpg'
-    }
-];
-
-// Preview
-const popupPreview = document.querySelector('.popup_preview');
-const popupPreviewImage = popupPreview.querySelector('.popup__image');
-const popupPreviewImageName = popupPreview.querySelector('.popup__image-name');
-const popupPreviewClose = popupPreview.querySelector('.popup__close');
-
+import { initPopupPreview } from "./index.js";
 
 class Card {
-    constructor(data, elementTemplate, openModalCard) {
+    constructor(data, elementTemplate) {
         this._name = data.name;
         this._link = data.link;
         this._elementTemplate = elementTemplate;
-        this._openModalCard = openModalCard;
     }
 
     _getElement() {
         const cardElement = document
-            .querySelector('.elementTemplate')
+            .querySelector(this._elementTemplate)
             .content
             .querySelector('.element')
             .cloneNode(true);
@@ -55,10 +21,10 @@ class Card {
     //создаем разметку в приватное поле _element, так у др элементов появится доступ к ней.
     getCard() {
         this._element = this._getElement();
+        this._cardImage = this._element.querySelector('.element__grid');
         this._setEventListeners();
-        //добавляем данные
-        this._element.querySelector('.element__grid').src = this._link;
-        this._element.querySelector('.element__grid').alt = this._name;
+        this._cardImage.src = this._link;
+        this._cardImage.alt = this._name;
         this._element.querySelector('.element__appellation').textContent = this._name;
 
         return this._element;
@@ -73,24 +39,6 @@ class Card {
 
     };
 
-    _openPopupPreview () {
-        popupPreview.classList.add('popup_is-opened');
-        popupPreviewImage.setAttribute('src', this._link);
-        popupPreviewImageName.textContent = this._name;
-        document.addEventListener('keydown', this._popupCloseEscCard);
-    }
-
-    _closePopupPreview() {
-        popupPreview.classList.remove('popup_is-opened');
-        document.removeEventListener('keydown', this._popupCloseEscCard );
-    }
-
-    _popupCloseEscCard = (evt) => {
-        if (evt.key === 'Escape') {
-            this._closePopupPreview()
-        }
-    }
-
     _setEventListeners() {
         this._element
             .querySelector('.element__like')
@@ -103,25 +51,12 @@ class Card {
             .addEventListener('click', (evt) => {
                 this._setDeleteCardListener(evt);
             });
-
-        this._element
-            .querySelector('.element__grid')
+        this._cardImage
             .addEventListener('click', () => {
-                this._openPopupPreview();
+                initPopupPreview(this._name, this._link);
             });
-
-        popupPreviewClose.addEventListener('click', () => {
-            this._closePopupPreview();
-        });
     }
 }
-
-defaultCards.forEach((item) => {
-    const newCard = new Card(item, item, '#template-element');// создаем класс для каждой карточки
-    const cardSection = document.querySelector('.elements');// находим блок для карточек
-    const cardElement = newCard.getCard(); //вставляем метод класса Card в переменную
-    cardSection.prepend(cardElement);//добавляем карточку в конец блока
-})
 
 // Экспортируем Card по дефолту из модуля
 export { Card };

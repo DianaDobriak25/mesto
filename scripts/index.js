@@ -1,5 +1,5 @@
 import { Card } from "./card.js";
-import FormValidator from "./formValidator.js";
+import FormValidator from "./FormValidator.js";
 
 const defaultCards = [
     {
@@ -88,7 +88,7 @@ function initPopupPreview(name, link) {
     popupPreviewImage.setAttribute('src', link);
     popupPreviewImage.setAttribute('alt', name);
     popupPreviewImageName.textContent = name;
-}
+}// откр. модальное окно, в функцию передаем вид. Вызыв. при клике на изображение карточки. Вызываем в классе Card.
 
 popupPreviewClose.addEventListener('click', () => {
     closeModal(popupPreview);
@@ -121,6 +121,8 @@ function newPlaceFormSubmitHandler(evt) {
 }
 newPlaceForm.addEventListener('submit', newPlaceFormSubmitHandler);
 profileAddButton.addEventListener('click', function () {
+    formInputNameEdit.value = "";
+    formInputDescriptionEdit.value = "";
     validatorNewPlace.resetValidation();
     openModal(popupElementNewPlace);
 });
@@ -131,6 +133,8 @@ popupNewPlaceCloseButtonElement.addEventListener('click', function () {
 
 // Редактирование профиля
 const profileOpenPopup = function () {
+    formInputNameEdit.value = "";
+    formInputDescriptionEdit.value = "";
     validatorEdit.resetValidation();
     formInputNameEdit.value = nameElementProfile.textContent;
     formInputDescriptionEdit.value = descriptionElementProfile.textContent;

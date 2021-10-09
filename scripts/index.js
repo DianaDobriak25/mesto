@@ -88,7 +88,8 @@ function initPopupPreview(name, link) {
     popupPreviewImage.setAttribute('src', link);
     popupPreviewImage.setAttribute('alt', name);
     popupPreviewImageName.textContent = name;
-}// откр. модальное окно, в функцию передаем вид. Вызыв. при клике на изображение карточки. Вызываем в классе Card.
+}
+// откр. модальное окно, в функцию передаем вид. Вызыв. при клике на изображение карточки. Вызываем в классе Card.
 
 popupPreviewClose.addEventListener('click', () => {
     closeModal(popupPreview);

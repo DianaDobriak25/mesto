@@ -56,11 +56,11 @@ export default class FormValidator {
 
     // Сброс состояния валидатора
     resetValidation() {
-        this._buttonStatus();
         this._inputList.forEach((inputElement) => {
-            inputElement.value = "";
+            inputElement.value = ""; // очищаем поля
             this._hideInputError(inputElement)
         });
+        this._buttonStatus();
     }
 
     setEventListeners() {

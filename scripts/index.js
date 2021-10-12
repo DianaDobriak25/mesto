@@ -122,8 +122,6 @@ function newPlaceFormSubmitHandler(evt) {
 }
 newPlaceForm.addEventListener('submit', newPlaceFormSubmitHandler);
 profileAddButton.addEventListener('click', function () {
-    formInputNameEdit.value = "";
-    formInputDescriptionEdit.value = "";
     validatorNewPlace.resetValidation();
     openModal(popupElementNewPlace);
 });
@@ -134,8 +132,6 @@ popupNewPlaceCloseButtonElement.addEventListener('click', function () {
 
 // Редактирование профиля
 const profileOpenPopup = function () {
-    formInputNameEdit.value = "";
-    formInputDescriptionEdit.value = "";
     validatorEdit.resetValidation();
     formInputNameEdit.value = nameElementProfile.textContent;
     formInputDescriptionEdit.value = descriptionElementProfile.textContent;

@@ -1,10 +1,9 @@
-import { initPopupPreview } from "./index.js";
-
 class Card {
-    constructor(data, elementTemplate) {
+    constructor(data, elementTemplate, handleCardClick) {
         this._name = data.name;
         this._link = data.link;
         this._elementTemplate = elementTemplate;
+        this._handleCardClick = handleCardClick;
     }
 
     _getElement() {
@@ -53,7 +52,7 @@ class Card {
             });
         this._cardImage
             .addEventListener('click', () => {
-                initPopupPreview(this._name, this._link);
+                this._handleCardClick(this._name, this._link);
             });
     }
 }

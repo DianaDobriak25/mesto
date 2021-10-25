@@ -1,0 +1,36 @@
+{
+  "name": "mesto",
+  "version": "1.0.0",
+  "description": "Описание\r Данный проект был разработан в качестве практической работы в рамках курса \"Веб-разработчик\" (курс 4, спринт 7).\r Ресурс содержит информацию о Жак-Ив Кусто, ресурс предназначен для обмена фотографиями.\r Сайт был разработан с помощью современного нативного метода верстки - Flexbox, также при помощи Grid-layout, c применением языка программирования - JS. В данном спринте также добавлена валидация форм.",
+  "main": "index.js",
+  "scripts": {
+    "build": "webpack --mode=production",
+    "dev": "webpack serve"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/DianaDobriak25/mesto.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/DianaDobriak25/mesto/issues"
+  },
+  "homepage": "https://github.com/DianaDobriak25/mesto#readme",
+  "devDependencies": {
+    "@babel/core": "^7.15.8",
+    "@babel/preset-env": "^7.15.8",
+    "autoprefixer": "^10.3.7",
+    "babel-loader": "^8.2.3",
+    "clean-webpack-plugin": "^4.0.0",
+    "css-loader": "^6.4.0",
+    "cssnano": "^5.0.8",
+    "html-webpack-plugin": "^5.4.0",
+    "mini-css-extract-plugin": "^2.4.3",
+    "postcss-loader": "^6.2.0",
+    "webpack": "^5.59.1",
+    "webpack-cli": "^4.9.1",
+    "webpack-dev-server": "^4.3.1"
+  }
+}

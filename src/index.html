@@ -5,7 +5,6 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="pages/index.css">
     <title>Жак-Ив Кусто</title>
 </head>
 
@@ -13,25 +12,25 @@
 
     <div class="page">
         <header class="header">
-            <img src="./images/mesto.svg" class="header__logo" alt="Логотип Mesto Russia">
+            <img src="<%=require('./images/mesto.svg')%>" class="header__logo" alt="Логотип Mesto Russia">
             <div class="header__line">
             </div>
         </header>
 
         <main>
             <section class="profile">
-                <img src="./images/image.png" class="profile__image" alt="Жак-Ив Кусто. Исследователь океана.">
+                <img src="<%=require('./images/image.png')%>" class="profile__image" alt="Жак-Ив Кусто. Исследователь океана.">
                 <div class="profile__info">
                     <div class="profile__header">
                         <h1 class="profile__name">Жак-Ив Кусто</h1>
                         <button class="profile__edit-button" type="button">
-                            <img src="./images/Vector.svg" class="profile__edit-image" alt="Редактировать профиль">
+                            <img src="<%=require('./images/Vector.svg')%>" class="profile__edit-image" alt="Редактировать профиль">
                         </button>
                     </div>
                     <p class="profile__description">Исследователь океана</p>
                 </div>
                 <button class="profile__add-button" type="button">
-                    <img src="./images/plus.svg" class="profile__add-image" alt="Добавить публикацию">
+                    <img src="<%=require('./images/plus.svg')%>" class="profile__add-image" alt="Добавить публикацию">
                 </button>
             </section>
 
@@ -63,8 +62,8 @@
                 <h2 class="popup__title">Новое место</h2>
                 <input name="name" placeholder="Название" class="popup__input" id="nameNewPlace" value="" required minlength="2" maxlength="30">
                 <span id="nameNewPlace-error" class=""></span>
-                <input name="description" type="url" placeholder="Ссылка на картинку"  class="popup__input" id="descriptionNewPlace" value="" required minlength="2">
-                <span id="descriptionNewPlace-error" class=""></span>
+                <input name="link" type="url" placeholder="Ссылка на картинку"  class="popup__input" id="linkNewPlace" value="" required minlength="2">
+                <span id="linkNewPlace-error" class=""></span>
                 <button class="popup__button  popup__button_disabled" type="submit">Создать</button>
             </form>
         </article>
@@ -84,7 +83,7 @@
         <template class="elementTemplate">
             <article class="element">
                 <button class="element__delete" type="button">
-                    <img src="./images/Group.svg" class="element__basket" alt="Удалить карточку">
+                    <img src="<%=require('./images/Group.svg')%>" class="element__basket" alt="Удалить карточку">
                 </button>
                 <img class="element__grid" src="#" alt="">
                 <div class="element__content">
@@ -97,7 +96,7 @@
         
 
     </div>
-    <script src="./scripts/index.js" type="module"></script> 
+  
     
 </body>
 

@@ -12,30 +12,27 @@ import {
     profileEditButtonElement,
     cardSection,
     formEdit,
-    formNewPlace
+    formNewPlace,
+    validatorConfig
 } from '../utils/constants.js';
+
+const createCard = (data) => {
+    const newCard = new Card(data, '.elementTemplate', (name, link) => {
+        popupWithImage.open(name, link);
+    });
+    const cardElement = newCard.getCard();
+    return cardElement;
+}
 
 const section = new Section({
     items: defaultCards,
     renderer: (item) => {
-        const newCard = new Card(item, '.elementTemplate', (name, link) => {
-            popupWithImage.open(name, link);
-        });
-        const cardElement = newCard.getCard();
+        const cardElement = createCard(item);
         cardSection.prepend(cardElement);
     }
 }, '.elements');
 section.renderItems();
 
-
-// Перенесли валидаторы из цикла в отдельные элементы
-const validatorConfig = {
-    inputSelector: '.popup__input',
-    submitButtonSelector: '.popup__button',
-    inactiveButtonClass: 'popup__button_disabled',
-    inputErrorClass: 'popup__input_type_error',
-    errorClass: 'error'
-};
 const validatorEdit = new FormValidator(validatorConfig, formEdit);
 validatorEdit.setEventListeners();
 
@@ -58,25 +55,24 @@ const popupEdit = new PopupWithForm('.popup_edit', (data) => {
 });
 popupEdit.setEventListeners();
 
-profileAddButton.addEventListener('click', function () {
-    validatorNewPlace.resetValidation();
-    popupCard.open();
+profileEditButtonElement.addEventListener('click', () => {
+    validatorEdit.resetValidation();
+    const inputData = userInfo.getUserInfo();
+    popupEdit.setInputValues(inputData);
+    popupEdit.open();
 });
 //=====================================================
 
 // Создание новой карточки
 const popupCard = new PopupWithForm('.popup_new-place', (data) => {
-    const newCard = new Card(data, '.elementTemplate', (name, link) => {
-        popupWithImage.open(name, link);
-    });
-    const cardElement = newCard.getCard();
+    const cardElement = createCard(data);
     section.addItem(cardElement);
 });
 popupCard.setEventListeners();
 
-profileEditButtonElement.addEventListener('click', () => {
-    validatorEdit.resetValidation();
-    popupEdit.open();
+profileAddButton.addEventListener('click', function () {
+    validatorNewPlace.resetValidation();
+    popupCard.open();
 });
 //=====================================================
 

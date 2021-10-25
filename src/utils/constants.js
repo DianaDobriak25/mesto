@@ -58,3 +58,11 @@ export const cardSection = document.querySelector('.elements');
 
 export const formEdit = document.getElementById("formEdit");
 export const formNewPlace = document.getElementById("formNewPlace");
+
+export const validatorConfig = {
+    inputSelector: '.popup__input',
+    submitButtonSelector: '.popup__button',
+    inactiveButtonClass: 'popup__button_disabled',
+    inputErrorClass: 'popup__input_type_error',
+    errorClass: 'error'
+};

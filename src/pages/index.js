@@ -1,16 +1,15 @@
 import './index.css';
-import Section from "../utils/components/Section.js";
-import { Card } from "../utils/components/Card.js";
-import FormValidator from "../utils/components/FormValidator.js";
-import UserInfo from "../utils/components/UserInfo.js";
-import { PopupWithImage } from "../utils/components/PopupWithImage.js";
-import PopupWithForm from "../utils/components/PopupWithForm.js";
+import Section from "../components/Section.js";
+import { Card } from "../components/Card.js";
+import FormValidator from "../components/FormValidator.js";
+import UserInfo from "../components/UserInfo.js";
+import { PopupWithImage } from "../components/PopupWithImage.js";
+import PopupWithForm from "../components/PopupWithForm.js";
 
 import {
     defaultCards,
     profileAddButton,
     profileEditButtonElement,
-    cardSection,
     formEdit,
     formNewPlace,
     validatorConfig
@@ -28,7 +27,7 @@ const section = new Section({
     items: defaultCards,
     renderer: (item) => {
         const cardElement = createCard(item);
-        cardSection.prepend(cardElement);
+        section.addItem(cardElement);
     }
 }, '.elements');
 section.renderItems();

@@ -10,7 +10,7 @@ class Card {
         this._handleCardClick = handleCardClick;
         this._handleCardDelete = handleCardDelete;
         this._handleLike = handleLike; //обработчик события клика на лайк
-        this._userIsOwner = data.ownerId === userId;
+        this._userIsOwner = data.owner._id === userId;
     }
 
     //в консоле смотрим, какие данные для конструктора требуются
@@ -37,7 +37,7 @@ class Card {
         this._element.querySelector('.element__appellation').textContent = this._name;
         this._element.querySelector('.element__like-sum').textContent = this._likes.length; //передаем количество лайков
         
-        // если карточка не принадлежит пользователю, то мы ее можем удалить(свою)
+        // если карточка принадлежит пользователю, то мы ее можем удалить(свою)
         if (!this._userIsOwner) {
             this._element.querySelector('.element__delete').remove();
         }

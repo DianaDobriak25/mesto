@@ -10,7 +10,6 @@ export default class PopupWithForm extends Popup {
 
     setInputValues(data) {
         for(let item in data) {
-            console.log(item);
             const input = Array.from(this._inputData).find(el => el.getAttribute('id') === item);
             if (!input) continue;
             input.value = data[item];

@@ -129,8 +129,20 @@ profileAddButton.addEventListener('click', function () {
 });
 //=====================================================
 
-//обновление аватара
-const popupAvatar = new PopupWithForm('.popup__avatar', (data) => {
+// Удаление карточки
+const popupDeleteCard = new PopupWithForm('.popup_card-delete', (data) => {
+    popupDeleteCard.updateState('Удаление...');
+    api.deleteCard(data).then(() => {
+        section.removeItem(data._id);
+        popupDeleteCard.close();
+        popupDeleteCard.updateState('Да');
+    });
+});
+popupDeleteCard.setEventListeners();
+//=====================================================
+
+// обновление аватара
+const popupAvatar = new PopupWithForm('.popup_avatar', (data) => {
     popupAvatar.updateState('Сохранение...');
     api.setUserAvatar(data).then(data => {
         userInfo.setUserInfo({

@@ -47,6 +47,7 @@ export const formInputDescriptionEdit = document.getElementById("descriptionEdit
 // Profile
 export const nameElementProfile = document.querySelector('.profile__name');
 export const descriptionElementProfile = document.querySelector('.profile__description');
+export const profileUpdateAvatarButton = document.querySelector('.profile__update-avatar-button');
 
 // Preview
 export const popupPreview = document.querySelector('.popup_preview');
@@ -58,6 +59,7 @@ export const cardSection = document.querySelector('.elements');
 
 export const formEdit = document.getElementById("formEdit");
 export const formNewPlace = document.getElementById("formNewPlace");
+export const formUpdateAvatar = document.getElementById("formUpdateAvatar");
 
 export const validatorConfig = {
     inputSelector: '.popup__input',

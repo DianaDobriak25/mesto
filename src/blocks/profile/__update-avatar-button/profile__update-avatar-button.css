@@ -1,0 +1,16 @@
+.profile__update-avatar-button {
+    position: absolute;
+    width: 122px;
+    height: 122px;
+    border-radius: 50%;
+    border: none;
+    background-color: rgba(0,0,0,.8);
+    z-index: 2;
+    opacity: 0;
+    top: -1px;
+    left: -1px;
+}
+
+.profile__update-avatar-button:hover {
+    opacity: 1;
+}

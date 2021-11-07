@@ -3,7 +3,14 @@
     height: 120px;
     border-radius: 50%;
     margin-right: 30px;
+    cursor: pointer;
 }
+
+
+.profile__image:hover:after {
+    opacity: 0.8;
+}
+
 
 @media screen and (max-width: 768px) {
     .profile__image {
@@ -11,3 +18,5 @@
         text-align: center;
     }
 }
+
+

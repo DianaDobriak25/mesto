@@ -10,6 +10,7 @@ export default class PopupWithForm extends Popup {
 
     setInputValues(data) {
         for(let item in data) {
+            console.log(item);
             const input = Array.from(this._inputData).find(el => el.getAttribute('id') === item);
             if (!input) continue;
             input.value = data[item];
@@ -29,12 +30,15 @@ export default class PopupWithForm extends Popup {
       super.close(); 
     }
 
+    updateState(state) {
+        this._popup.querySelector('.popup__button').textContent = state;
+    }
+
     setEventListeners() {
         this._popup.addEventListener('submit', (evt) => {
             evt.preventDefault();
             const inputValues = this._getInputValues();
             this._callback(inputValues);
-            this.close();
         });
         super.setEventListeners()
     }

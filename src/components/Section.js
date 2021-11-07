@@ -16,5 +16,9 @@ export default class Section {
     addItem(element) {
         this._container.prepend(element);
     }
+
+    removeItem(id) {
+        this._container.querySelector(`[id="${id}"]`).remove();
+    }
 }
 

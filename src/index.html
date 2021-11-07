@@ -19,12 +19,18 @@
 
         <main>
             <section class="profile">
-                <img src="<%=require('./images/image.png')%>" class="profile__image" alt="Жак-Ив Кусто. Исследователь океана.">
+                <img src="<%=require('./images/image.png')%>" class="profile__image"
+                    alt="Жак-Ив Кусто. Исследователь океана.">
+                <button class="profile__update-avatar-button" type="button">
+                    <img src="<%=require('./images/Vector10.svg')%>" class="profile__update-avatar-image"
+                        alt="Обновить аватар">
+                </button>
                 <div class="profile__info">
                     <div class="profile__header">
                         <h1 class="profile__name">Жак-Ив Кусто</h1>
                         <button class="profile__edit-button" type="button">
-                            <img src="<%=require('./images/Vector.svg')%>" class="profile__edit-image" alt="Редактировать профиль">
+                            <img src="<%=require('./images/Vector.svg')%>" class="profile__edit-image"
+                                alt="Редактировать профиль">
                         </button>
                     </div>
                     <p class="profile__description">Исследователь океана</p>
@@ -42,16 +48,43 @@
             <p class="footer__resource">&copy;2021. Mesto Russia</p>
         </footer>
 
+
+        <article class="popup popup__avatar">
+            <form class="popup__container popup__container_update-avatar" id="formUpdateAvatar" name="popupNewAvatar"
+                novalidate>
+                <button class="popup__close" type="button"></button>
+                <h2 class="popup__title">Обновить аватар</h2>
+                <input name="avatar" type="url" placeholder="Ссылка на картинку" class="popup__input" id="avatar"
+                    value="" required minlength="2">
+                <span id="avatar-error" class=""></span>
+                <button class="popup__button" type="submit">Сохранить</button>
+            </form>
+        </article>
+
+
+
+        <article class="popup popup__card-delete">
+            <form class="popup__container" id="formDeleteCard" name="popupDeleteCard" novalidate>
+                <button class="popup__close" type="button"></button>
+                <h2 class="popup__title">Вы уверены?</h2>
+                <input type="hidden" name="_id" id="_id">
+                <button class="popup__button" type="submit">Да</button>
+            </form>
+        </article>
+
+
         <article class="popup popup_edit">
             <form class="popup__container" id="formEdit" name="popupEdit" novalidate>
                 <button class="popup__close" type="button"></button>
                 <div class="popup__content">
                     <h2 class="popup__title">Редактировать профиль</h2>
-                    <input name="name" class="popup__input" id="userName" placeholder="Имя" value="" required minlength="2" maxlength="40">
+                    <input name="name" class="popup__input" id="userName" placeholder="Имя" value="" required
+                        minlength="2" maxlength="40">
                     <span id="userName-error" class=""></span>
-                    <input name="description" class="popup__input" id="userDescription" placeholder="О себе" value="" required minlength="2" maxlength="200">
+                    <input name="description" class="popup__input" id="userDescription" placeholder="О себе" value=""
+                        required minlength="2" maxlength="200">
                     <span id="userDescription-error" class=""></span>
-                    <button class="popup__button  popup__button_disabled" type="submit">Сохранить</button>
+                    <button class="popup__button" type="submit">Сохранить</button>
                 </div>
             </form>
         </article>
@@ -60,13 +93,17 @@
             <form class="popup__container" id="formNewPlace" name="popupNewPlace" novalidate>
                 <button class="popup__close" type="button"></button>
                 <h2 class="popup__title">Новое место</h2>
-                <input name="name" placeholder="Название" class="popup__input" id="nameNewPlace" value="" required minlength="2" maxlength="30">
+                <input name="name" placeholder="Название" class="popup__input" id="nameNewPlace" value="" required
+                    minlength="2" maxlength="30">
                 <span id="nameNewPlace-error" class=""></span>
-                <input name="link" type="url" placeholder="Ссылка на картинку"  class="popup__input" id="linkNewPlace" value="" required minlength="2">
+                <input name="link" type="url" placeholder="Ссылка на картинку" class="popup__input" id="linkNewPlace"
+                    value="" required minlength="2">
                 <span id="linkNewPlace-error" class=""></span>
-                <button class="popup__button  popup__button_disabled" type="submit">Создать</button>
+                <button class="popup__button" type="submit">Создать</button>
             </form>
         </article>
+
+
 
         <article class="popup popup_preview">
             <div class="popup__container popup__container_preview">
@@ -75,7 +112,7 @@
                     <img src="#" class="popup__image">
                     <p class="popup__image-name"></p>
                 </div>
-                </div>
+            </div>
         </article>
 
 
@@ -88,16 +125,20 @@
                 <img class="element__grid" src="#" alt="">
                 <div class="element__content">
                     <h2 class="element__appellation"></h2>
-                    <button class="element__like" type="button"></button>
+                    <div class="element__like-block">
+                        <button class="element__like" type="button"></button>
+                        <p class="element__like-sum"></p>
+                    </div>
                 </div>
+
             </article>
         </template>
 
-        
+
 
     </div>
-  
-    
+
+
 </body>
 
 </html>

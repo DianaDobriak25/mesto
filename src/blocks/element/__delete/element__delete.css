@@ -6,6 +6,7 @@
     transition: 0.3s;
     margin: 18px 15px auto;
     right: 0px;
+    z-index: 2;
 }
 
 .element__delete:hover {

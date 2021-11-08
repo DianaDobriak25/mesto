@@ -11,14 +11,10 @@ export default class Section {
             this._renderer(item)
         });
     }
-    //принимает DOM-элемент и добавляет его в контейнер.
 
+    //принимает DOM-элемент и добавляет его в контейнер.
     addItem(element) {
         this._container.prepend(element);
-    }
-
-    removeItem(id) {
-        this._container.querySelector(`[id="${id}"]`).remove();
     }
 }
 

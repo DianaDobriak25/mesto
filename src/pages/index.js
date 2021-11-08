@@ -28,6 +28,8 @@ const api = new Api({
     token: '8b33a509-4e1f-4dbc-8edf-f6d68bfac89d'
 });
 
+const cards = [];
+
 const createCard = (data) => {
     const newCard = new Card(
         data,
@@ -47,6 +49,7 @@ const createCard = (data) => {
             }) //передаем this и получаем card
         }
     );
+    cards.push(newCard);
     const cardElement = newCard.getCard();
     return cardElement;
 }
@@ -95,6 +98,9 @@ const popupEdit = new PopupWithForm('.popup_edit', (data) => {
             cohort: data.cohort,
         });
         popupEdit.close();
+    }).catch(err => {
+        console.log(err);
+    }).finally(() => {
         popupEdit.updateState('Сохранить');
     });
 });
@@ -117,8 +123,11 @@ const popupCard = new PopupWithForm('.popup_new-place', (data) => {
         const cardElement = createCard(data);
         section.addItem(cardElement);
         popupCard.close();
+    }).catch(err => {
+        console.log(err);
+    }).finally(() => {
         popupCard.updateState('Создать');
-    })
+    });
 
 });
 popupCard.setEventListeners();
@@ -133,8 +142,14 @@ profileAddButton.addEventListener('click', function () {
 const popupDeleteCard = new PopupWithForm('.popup_card-delete', (data) => {
     popupDeleteCard.updateState('Удаление...');
     api.deleteCard(data).then(() => {
-        section.removeItem(data._id);
+        const card = cards.find(el => el.getId() === data._id);
+        if (card) {
+            card.remove();
+        }
         popupDeleteCard.close();
+    }).catch(err => {
+        console.log(err);
+    }).finally(() => {
         popupDeleteCard.updateState('Да');
     });
 });
@@ -153,6 +168,9 @@ const popupAvatar = new PopupWithForm('.popup_avatar', (data) => {
             cohort: data.cohort,
         });
         popupAvatar.close();
+    }).catch(err => {
+        console.log(err);
+    }).finally(() => {
         popupAvatar.updateState('Сохранить');
     })
 });
@@ -186,6 +204,8 @@ api
             const cardElement = createCard(data);
             section.addItem(cardElement);
         });
+    }).catch(err => {
+        console.log(err);
     })
 
 const close = new URL('../images/close.png', import.meta.url);

@@ -6,7 +6,7 @@ export default class UserInfo {
         this._userDescription = document.querySelector(userDescription);
         this._userAvatar = document.querySelector(userAvatar);
     }
-    
+
     //получаем информацию о пользователе
     getUserInfo() {
         const dataUser = {};
@@ -20,10 +20,10 @@ export default class UserInfo {
 
     // информация о пользователе
     setUserInfo({ _id, cohort, avatar, name, description }) {
-        this._id = _id;
-        this._cohort = cohort;
-        this._userAvatar.setAttribute("src", avatar);
-        this._userName.textContent = name;
-        this._userDescription.textContent = description;
+        if (_id) this._id = _id;
+        if (cohort) this._cohort = cohort;
+        if (avatar) this._userAvatar.setAttribute("src", avatar);
+        if (name) this._userName.textContent = name;
+        if (description) this._userDescription.textContent = description;
     }
 }

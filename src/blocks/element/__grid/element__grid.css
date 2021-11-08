@@ -1,5 +1,12 @@
 .element__grid {
     width: 100%;
+    min-height: 282px;
     height: 282px;
     object-fit: cover;
+    cursor: pointer;
+    transition: all 0.15s linear;
+}
+
+.element__grid:hover {
+    filter: blur(2px);
 }

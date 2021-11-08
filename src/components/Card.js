@@ -87,6 +87,9 @@ class Card {
         return Boolean(this._likes.find(user => user._id === this._userId))
     }
 
+    remove() {
+        this._element.remove();
+    }
 
 }
 

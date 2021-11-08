@@ -10,13 +10,20 @@ export default class Api {
         return `${this._address}/${this._groupId}/${query}`
     }
 
+    _getResponseData(res) {
+        if (!res.ok) {
+            return Promise.reject(`Ошибка: ${res.status}`);
+        }
+        return res.json();
+    }
+
     _get(query) {
         const option = {
             headers: {
                 authorization: this._token
             }
         }
-        return fetch(this._url(query), option).then(res => res.ok ? res.json() : Promise.reject(`Ошибка: ${res.status}`))
+        return fetch(this._url(query), option).then(res => this._getResponseData(res));
     }
 
     _set(query, method, body) {
@@ -28,7 +35,7 @@ export default class Api {
             },
             body: JSON.stringify(body)
         }
-        return fetch(this._url(query), option).then(res => res.ok ? res.json() : Promise.reject(`Ошибка: ${res.status}`))
+        return fetch(this._url(query), option).then(res => this._getResponseData(res));
     }
 
     // Запрос информации о пользователе

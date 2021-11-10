@@ -43,10 +43,13 @@ const createCard = (data) => {
             popupDeleteCard.open();
         },
         (card) => {
-            api.setLikes(card.getId(), card.isLiked()).then((data) => {
-                card.updateLikes(data.likes);
-                card.toggleLikeActive();
-            }) //передаем this и получаем card
+            api.setLikes(card.getId(), card.isLiked())
+                .then((data) => {
+                    card.updateLikes(data.likes);
+                    card.toggleLikeActive();
+                }).catch(err => {
+                    console.log(err);
+                })
         }
     );
     cards.push(newCard);
@@ -179,10 +182,6 @@ popupAvatar.setEventListeners();
 // при клике открываем попап для обновления изображения
 profileUpdateAvatarButton.addEventListener('click', function () {
     validatorUpdateAvatar.resetValidation();
-    const inputData = userInfo.getUserInfo();
-    popupAvatar.setInputValues({
-        avatar: inputData.userAvatar,
-    })
     popupAvatar.open();
 })
 
